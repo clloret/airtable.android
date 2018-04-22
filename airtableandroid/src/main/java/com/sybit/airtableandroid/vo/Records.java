@@ -14,14 +14,16 @@ import java.util.Map;
  */
 public class Records {
 
-    private List<Map<String, Object>> records;
+  private List<Map<String, Object>> records;
 
-    public List<Map<String, Object>> getRecords() {
-        return records;
-    }
+  public List<Map<String, Object>> getRecords() {
 
-    public void setRecords(List<Map<String, Object>> records) {
-        this.records = records;
-    }
+    return records;
+  }
+
+  public void setRecords(List<Map<String, Object>> records) {
+
+    this.records = records;
+  }
 
 }

@@ -7,75 +7,79 @@ package com.sybit.airtableandroid.vo;
 
 
 /**
- *
  * @author fzr
  */
 public class Thumbnail {
-    
-        private String name;
-    
-        private String url;
-        private Float width;
-        private Float height;
 
-        /**
-         * @return the url
-         */
-        public String getUrl() {
-            return url;
-        }
+  private String name;
 
-        /**
-         * @param url the url to set
-         */
-        public void setUrl(String url) {
-            this.url = url;
-        }
+  private String url;
+  private Float width;
+  private Float height;
 
-    /**
-     * @return the width
-     */
-    public Float getWidth() {
-        return width;
-    }
+  /**
+   * @return the url
+   */
+  public String getUrl() {
 
-    /**
-     * @param width the width to set
-     */
-    public void setWidth(Float width) {
-        this.width = width;
-    }
+    return url;
+  }
 
-    /**
-     * @return the height
-     */
-    public Float getHeight() {
-        return height;
-    }
+  /**
+   * @param url the url to set
+   */
+  public void setUrl(String url) {
 
-    /**
-     * @param height the height to set
-     */
-    public void setHeight(Float height) {
-        this.height = height;
-    }
+    this.url = url;
+  }
 
-    /**
-     * @return the name
-     */
-    public String getName() {
-        return name;
-    }
+  /**
+   * @return the width
+   */
+  public Float getWidth() {
 
-    /**
-     * @param name the name to set
-     */
-    public void setName(String name) {
-        this.name = name;
-    }
-        
-        
+    return width;
+  }
+
+  /**
+   * @param width the width to set
+   */
+  public void setWidth(Float width) {
+
+    this.width = width;
+  }
+
+  /**
+   * @return the height
+   */
+  public Float getHeight() {
+
+    return height;
+  }
+
+  /**
+   * @param height the height to set
+   */
+  public void setHeight(Float height) {
+
+    this.height = height;
+  }
+
+  /**
+   * @return the name
+   */
+  public String getName() {
+
+    return name;
+  }
+
+  /**
+   * @param name the name to set
+   */
+  public void setName(String name) {
+
+    this.name = name;
+  }
 
 
-        
 }

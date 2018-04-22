@@ -5,28 +5,26 @@
  */
 package com.sybit.airtableandroid.vo;
 
-
 /**
- *
  * @author fzr
  */
 public class PostRecord<T> {
-    
-    private T fields;
 
-    /**
-     * @return the fields
-     */
-    public T getFields() {
-        return fields;
-    }
+  private T fields;
 
-    /**
-     * @param fields the fields to set
-     */
-    public void setFields(T fields) {
-        this.fields = fields;
-    }
-    
-    
+  /**
+   * @return the fields
+   */
+  public T getFields() {
+
+    return fields;
+  }
+
+  /**
+   * @param fields the fields to set
+   */
+  public void setFields(T fields) {
+
+    this.fields = fields;
+  }
 }

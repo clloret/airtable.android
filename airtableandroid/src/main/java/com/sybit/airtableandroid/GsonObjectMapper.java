@@ -5,36 +5,33 @@
  */
 package com.sybit.airtableandroid;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.mashape.unirest.http.ObjectMapper;
-
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import timber.log.Timber;
 
 /**
- * Default mapper based on GSON.
- *
- * @since 0.1
  * @author fzr
  */
-class GsonObjectMapper implements ObjectMapper {
-    private static final Logger LOG = Logger.getLogger( GsonObjectMapper.class.getName() );
-    private final Gson gson;
-                
-    public GsonObjectMapper() {
-        gson = new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").create();
-     
-    }
+class GsonObjectMapper extends ObjectMapper {
 
-    public <T> T readValue(String value, Class<T> valueType) {
-        LOG.log(Level.FINE, "readValue: \n" + value);
-        return gson.fromJson(value, valueType);
-    }
+  private static final String DATE_TIME_FORMAT = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'";
+  private final Gson gson;
 
-    public String writeValue(Object value) {
-        LOG.log(Level.FINE, "writeValue: \n" + value);
-        return gson.toJson(value);
-    }
+  public GsonObjectMapper() {
 
+    gson = new GsonBuilder().setDateFormat(DATE_TIME_FORMAT).create();
+  }
+
+  public <T> T readValue(String value, Class<T> valueType) {
+
+    Timber.d("readValue: %s", value);
+    return gson.fromJson(value, valueType);
+  }
+
+  public String writeValue(Object value) {
+
+    Timber.d("writeValue: %s", value);
+    return gson.toJson(value);
+  }
 }

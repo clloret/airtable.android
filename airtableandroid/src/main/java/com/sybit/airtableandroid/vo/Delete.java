@@ -6,42 +6,44 @@
 package com.sybit.airtableandroid.vo;
 
 /**
- *
  * @author fzr
  */
 public class Delete {
-    
-    private boolean deleted;
-    private String id;
 
-    /**
-     * @return the deleted
-     */
-    public boolean isDeleted() {
-        return deleted;
-    }
+  private boolean deleted;
+  private String id;
 
-    /**
-     * @param deleted the deleted to set
-     */
-    public void setDeleted(boolean deleted) {
-        this.deleted = deleted;
-    }
+  /**
+   * @return the deleted
+   */
+  public boolean isDeleted() {
 
-    /**
-     * @return the id
-     */
-    public String getId() {
-        return id;
-    }
+    return deleted;
+  }
 
-    /**
-     * @param id the id to set
-     */
-    public void setId(String id) {
-        this.id = id;
-    }
-    
-    
-    
+  /**
+   * @param deleted the deleted to set
+   */
+  public void setDeleted(boolean deleted) {
+
+    this.deleted = deleted;
+  }
+
+  /**
+   * @return the id
+   */
+  public String getId() {
+
+    return id;
+  }
+
+  /**
+   * @param id the id to set
+   */
+  public void setId(String id) {
+
+    this.id = id;
+  }
+
+
 }

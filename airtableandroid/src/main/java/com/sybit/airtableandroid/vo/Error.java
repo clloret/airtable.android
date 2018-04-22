@@ -7,22 +7,27 @@
 package com.sybit.airtableandroid.vo;
 
 public class Error {
-    private String type;
-    private String message;
 
-    public String getType() {
-        return type;
-    }
+  private String type;
+  private String message;
 
-    public void setType(String type) {
-        this.type = type;
-    }
+  public String getType() {
 
-    public String getMessage() {
-        return message;
-    }
+    return type;
+  }
 
-    public void setMessage(String message) {
-        this.message = message;
-    }
+  public void setType(String type) {
+
+    this.type = type;
+  }
+
+  public String getMessage() {
+
+    return message;
+  }
+
+  public void setMessage(String message) {
+
+    this.message = message;
+  }
 }

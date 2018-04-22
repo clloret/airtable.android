@@ -9,42 +9,41 @@ import java.util.List;
 
 /**
  * Interface for specific queries.
- *
- * @since 0.1
  */
 @SuppressWarnings("WeakerAccess")
 public interface Query {
-    
-    /**
-     * @return Fields to be loaded 
-     */
-    String [] getFields();
-    
-    /**
-     * @return the number of records per page
-     */
-    Integer getPageSize();
 
-    /**
-     * @return number of max rows to load.
-     */
-    Integer getMaxRecords();
+  /**
+   * @return Fields to be loaded
+   */
+  String[] getFields();
 
-    /**
-     * @return Name of view to load.
-     */
-    String getView();
+  /**
+   * @return the number of records per page
+   */
+  Integer getPageSize();
 
-    /**
-     * @return sortation of result set.
-     */
-    List<Sort> getSort();
+  /**
+   * @return number of max rows to load.
+   */
+  Integer getMaxRecords();
 
-    /**
-     * Define a filter formula.
-     *
-     * see https://support.airtable.com/hc/en-us/articles/203255215-Formula-Field-Reference
-     * @return get the filter formula.
-     */
-    String filterByFormula();
+  /**
+   * @return Name of view to load.
+   */
+  String getView();
+
+  /**
+   * @return sortation of result set.
+   */
+  List<Sort> getSort();
+
+  /**
+   * Define a filter formula.
+   *
+   * see https://support.airtable.com/hc/en-us/articles/203255215-Formula-Field-Reference
+   *
+   * @return get the filter formula.
+   */
+  String filterByFormula();
 }

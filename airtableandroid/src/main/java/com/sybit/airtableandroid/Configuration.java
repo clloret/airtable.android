@@ -9,84 +9,66 @@ package com.sybit.airtableandroid;
 /**
  * Configuration settings for Airtable.
  * Used by class <code>Airtable</code> to configure basic settings.
- *
- * @since 0.1
  */
 public class Configuration {
 
-    public static final String ENDPOINT_URL = "https://api.airtable.com/v0";
+  public static final String ENDPOINT_URL = "https://api.airtable.com/v0";
 
-    private String endpointUrl;
-    private String apiKey;
-    private String proxy;
-    private Long timeout;
+  private String endpointUrl;
+  private String apiKey;
+  private Long timeout;
 
-    /**
-     * Configure API using given API Key ,default endpoint and no Proxy.
-     *
-     * @param apiKey
-     */
-    public Configuration(String apiKey) {
-        this(apiKey, ENDPOINT_URL,null);
+  /**
+   * Configure API using given API Key and default endpoint.
+   */
+  public Configuration(String apiKey) {
 
-    }
-    /**
-     * Configure API using given API Key and default endpointURL.
-     *
-     * @param apiKey
-     * @param endpointUrl
-     */
-    public Configuration(String apiKey, String endpointUrl, String proxy) {
-        this.apiKey = apiKey;
-        this.endpointUrl = endpointUrl;
-        this.proxy = proxy;
-    }
+    this(apiKey, ENDPOINT_URL);
 
-    public String getEndpointUrl() {
-        return endpointUrl;
-    }
+  }
 
-    public void setEndpointUrl(String endpointUrl) {
-        this.endpointUrl = endpointUrl;
-    }
+  /**
+   * Configure API using given API Key and default endpointURL.
+   */
+  public Configuration(String apiKey, String endpointUrl) {
 
-    public String getApiKey() {
-        return apiKey;
-    }
+    this.apiKey = apiKey;
+    this.endpointUrl = endpointUrl;
+  }
 
-    public void setApiKey(String apiKey) {
-        this.apiKey = apiKey;
-    }
+  public String getEndpointUrl() {
 
-    /**
-     * Get connection timeout.
-     * @return
-     */
-    public Long getTimeout() {
-        return timeout;
-    }
+    return endpointUrl;
+  }
 
-    /**
-     * Set connection timeout.
-     * @param timeout
-     */
-    public void setTimeout(Long timeout) {
-        this.timeout = timeout;
-    }
+  public void setEndpointUrl(String endpointUrl) {
 
-    /**
-     * @return the proxy
-     */
-    public String getProxy() {
-        return proxy;
-    }
+    this.endpointUrl = endpointUrl;
+  }
 
-    /**
-     * @param proxy the proxy to set
-     */
-    public void setProxy(String proxy) {
-        this.proxy = proxy;
-    }
+  public String getApiKey() {
 
+    return apiKey;
+  }
 
+  public void setApiKey(String apiKey) {
+
+    this.apiKey = apiKey;
+  }
+
+  /**
+   * Get connection timeout.
+   */
+  public Long getTimeout() {
+
+    return timeout;
+  }
+
+  /**
+   * Set connection timeout.
+   */
+  public void setTimeout(Long timeout) {
+
+    this.timeout = timeout;
+  }
 }

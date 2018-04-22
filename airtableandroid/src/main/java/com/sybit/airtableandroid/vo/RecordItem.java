@@ -12,33 +12,40 @@ import java.util.Map;
  *
  */
 public class RecordItem {
-    private String id;
 
-    private Map<String, Object> fields;
+  private String id;
 
-    private String createdTime;
+  private Map<String, Object> fields;
 
-    public String getId() {
-        return id;
-    }
+  private String createdTime;
 
-    public void setId(String id) {
-        this.id = id;
-    }
+  public String getId() {
 
-    public Map<String, Object> getFields() {
-        return fields;
-    }
+    return id;
+  }
 
-    public void setFields(Map<String, Object> fields) {
-        this.fields = fields;
-    }
+  public void setId(String id) {
 
-    public String getCreatedTime() {
-        return createdTime;
-    }
+    this.id = id;
+  }
 
-    public void setCreatedTime(String createdTime) {
-        this.createdTime = createdTime;
-    }
+  public Map<String, Object> getFields() {
+
+    return fields;
+  }
+
+  public void setFields(Map<String, Object> fields) {
+
+    this.fields = fields;
+  }
+
+  public String getCreatedTime() {
+
+    return createdTime;
+  }
+
+  public void setCreatedTime(String createdTime) {
+
+    this.createdTime = createdTime;
+  }
 }

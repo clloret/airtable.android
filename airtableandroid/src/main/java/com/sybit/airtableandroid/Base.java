@@ -7,11 +7,9 @@
 package com.sybit.airtableandroid;
 
 import com.sybit.airtableandroid.vo.Records;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import java.util.HashMap;
 import java.util.Map;
+import timber.log.Timber;
 
 /**
  * Representation Class of Airtable Base.
@@ -20,71 +18,70 @@ import java.util.Map;
  */
 public class Base {
 
-    private static final Logger LOG = LoggerFactory.getLogger( Base.class );
+  private final Map<String, Table> tableMap = new HashMap<>();
 
-    private final Map<String, Table> tableMap = new HashMap<>();
+  private final String base;
 
-    private final String baseName;
-
-    private final Airtable parent;
+  private final Airtable parent;
 
 
-    /**
-     * Create Airtable Base with given baseName ID.
-     *
-     * @param name base ID could be found at https://airtable.com if you select your current baseName.
-     * @param airtable parent airtable object
-     */
-    public Base(String name, Airtable airtable) {
-        assert name != null : "baseName was null";
-        assert airtable != null : "airtable was null";
+  /**
+   * Create Airtable Base with given base ID.
+   *
+   * @param base base ID could be found at https://airtable.com if you select your current base.
+   * @param airtable parent airtable object
+   */
+  public Base(String base, Airtable airtable) {
 
-        this.baseName = name;
-        this.parent = airtable;
-    }
-    
-    /**
-     * Get Airtable object as parent.
-     * @return
-     */
-    public Airtable airtable() {
-        return parent;
-    }
+    this.base = base;
+    this.parent = airtable;
+  }
 
-    /**
-     * Get Table object of given table.
-     * @param name Name of required table.
-     * @return Object to access table.
-     */
-    public Table table(String name) {
-        return table(name, Records.class);
-    }
+  /**
+   * Get Airtable object as parent.
+   */
+  public Airtable airtable() {
 
-    /**
-     * Get Table object of given table.
-     * @param name Name of required table.
-     * @param clazz Class representing row of resultsets
-     * @return Object to access table.
-     */
-    public Table table(String name, Class clazz) {
-        assert name != null : "name was null";
-        assert clazz != null : "clazz was null";
+    return parent;
+  }
 
-        if(!tableMap.containsKey(name)) {
-            LOG.debug("Create new instance for table [" + name + "]");
-            Table t = new Table(name, clazz);
-            t.setParent(this);
-            tableMap.put(name, t);
-        }
+  /**
+   * Get Table object of given table.
+   *
+   * @param name Name of required table.
+   * @return Object to access table.
+   */
+  public Table table(String name) {
 
-        return  tableMap.get(name);
+    return table(name, Records.class);
+  }
+
+  /**
+   * Get Table object of given table.
+   *
+   * @param name Name of required table.
+   * @param clazz Class representing row of resultsets
+   * @return Object to access table.
+   */
+  public Table table(String name, Class clazz) {
+
+    if (!tableMap.containsKey(name)) {
+      Timber.d("Create new instance for table [" + name + "]");
+      Table t = new Table(name, clazz);
+      t.setParent(this);
+      tableMap.put(name, t);
     }
 
-    /**
-     * Get baseName id of baseName.
-     * @return baseName id
-     */
-    public String name() {
-        return baseName;
-    }
+    return tableMap.get(name);
+  }
+
+  /**
+   * Get base id of base.
+   *
+   * @return base id
+   */
+  public String name() {
+
+    return base;
+  }
 }

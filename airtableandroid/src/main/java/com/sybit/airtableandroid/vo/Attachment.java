@@ -11,105 +11,111 @@ import java.util.Map;
 
 /**
  * Airtabe Attachment items.
- *
  */
 public class Attachment {
-    
-    private String id;
-    private String url;
-    private String filename;
-    private Float size;
-    private String type;
-    private Map<String,Thumbnail> thumbnails;
-        
-    /**
-     * @return the id
-     */
-    public String getId() {
-        return id;
-    }
 
-    /**
-     * @param id the id to set
-     */
-    public void setId(String id) {
-        this.id = id;
-    }
+  private String id;
+  private String url;
+  private String filename;
+  private Float size;
+  private String type;
+  private Map<String, Thumbnail> thumbnails;
 
-    /**
-     * @return the url
-     */
-    public String getUrl() {
-        return url;
-    }
+  /**
+   * @return the id
+   */
+  public String getId() {
 
-    /**
-     * @param url the url to set
-     */
-    public void setUrl(String url) {
-        this.url = url;
-    }
+    return id;
+  }
 
-    /**
-     * @return the filename
-     */
-    public String getFilename() {
-        return filename;
-    }
+  /**
+   * @param id the id to set
+   */
+  public void setId(String id) {
 
-    /**
-     * @param filename the filename to set
-     */
-    public void setFilename(String filename) {
-        this.filename = filename;
-    }
+    this.id = id;
+  }
 
-    /**
-     * @return the size
-     */
-    public Float getSize() {
-        return size;
-    }
+  /**
+   * @return the url
+   */
+  public String getUrl() {
 
-    /**
-     * @param size the size to set
-     */
-    public void setSize(Float size) {
-        this.size = size;
-    }
+    return url;
+  }
 
-    /**
-     * @return the type
-     */
-    public String getType() {
-        return type;
-    }
+  /**
+   * @param url the url to set
+   */
+  public void setUrl(String url) {
 
-    /**
-     * @param type the type to set
-     */
-    public void setType(String type) {
-        this.type = type;
-    }
+    this.url = url;
+  }
 
-    /**
-     * @return the thumbnails
-     */
-    public Map<String,Thumbnail> getThumbnails() {
-        return thumbnails;
-    }
+  /**
+   * @return the filename
+   */
+  public String getFilename() {
 
-    /**
-     * @param thumbnails the thumbnails to set
-     */
-    public void setThumbnails(Map<String,Thumbnail> thumbnails) {
-        this.thumbnails = thumbnails;
-    }
+    return filename;
+  }
+
+  /**
+   * @param filename the filename to set
+   */
+  public void setFilename(String filename) {
+
+    this.filename = filename;
+  }
+
+  /**
+   * @return the size
+   */
+  public Float getSize() {
+
+    return size;
+  }
+
+  /**
+   * @param size the size to set
+   */
+  public void setSize(Float size) {
+
+    this.size = size;
+  }
+
+  /**
+   * @return the type
+   */
+  public String getType() {
+
+    return type;
+  }
+
+  /**
+   * @param type the type to set
+   */
+  public void setType(String type) {
+
+    this.type = type;
+  }
+
+  /**
+   * @return the thumbnails
+   */
+  public Map<String, Thumbnail> getThumbnails() {
+
+    return thumbnails;
+  }
+
+  /**
+   * @param thumbnails the thumbnails to set
+   */
+  public void setThumbnails(Map<String, Thumbnail> thumbnails) {
+
+    this.thumbnails = thumbnails;
+  }
 
 
-
-    
-
-    
-    
 }
