@@ -1,0 +1,10 @@
+{
+  "id": "rec0XqfldqwfXeoaa",
+  "fields": {
+    "Text": "New event",
+    "Number": "111.1",
+    "Checkbox": true,
+    "Date": "2018-03-31"
+  },
+  "createdTime": "2016-05-09T07:03:30.000Z"
+}
