@@ -1,34 +1,79 @@
+    buildscript {
+    repositories {
+        jcenter()
+        google()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.1.1'
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
 apply plugin: 'com.android.library'
 
+def getProperty(String filename, String propName) {
+    def propsFile = rootProject.file(filename)
+    if (propsFile.exists()) {
+        def props = new Properties()
+        props.load(new FileInputStream(propsFile))
+        if (props[propName] != null) {
+            return props[propName]
+        } else {
+            print("No such property " + propName + " in file " + filename);
+        }
+    } else {
+        print(filename + " does not exist!")
+    }
+}
+
 android {
-    compileSdkVersion 26
-    buildToolsVersion "26.0.1"
+    def apiLevel = 27
+
+    compileSdkVersion apiLevel
+    buildToolsVersion "27.0.3"
 
     defaultConfig {
         minSdkVersion 23
-        targetSdkVersion 23
+        targetSdkVersion apiLevel
+        versionCode 1
+        versionName "1.0"
+        buildConfigField "String", "AIRTABLE_API_KEY", "\"${getProperty("local.properties", "airtable_api_key")}\""
+        buildConfigField "String", "AIRTABLE_BASE_TEST", "\"${getProperty("local.properties", "airtable_base_test")}\""
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
-
     buildTypes {
         release {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
-
 repositories {
-    mavenCentral()
+    jcenter()
+    google()
 }
-
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile group: 'org.apache.httpcomponents', name: 'httpclient-android', version: '4.3.5.1'
-    compile group: 'org.slf4j', name: 'slf4j-android', version: '1.7.25'
-    compile group: 'com.google.code.gson', name: 'gson', version:'2.8.0'
-    compile group: 'commons-io', name: 'commons-io', version:'2.5'
+    def jackson = '2.8.9'
 
+    implementation "com.fasterxml.jackson.core:jackson-core:$jackson"
+    implementation "com.fasterxml.jackson.core:jackson-databind:$jackson"
+    implementation "com.jakewharton.timber:timber:4.6.1"
+    implementation 'com.amitshekhar.android:rx2-android-networking:1.0.0'
+    implementation 'com.google.code.gson:gson:2.8.2'
+    implementation 'commons-beanutils:commons-beanutils:1.9.3'
+    implementation 'org.jodd:jodd-bean:3.7.1' // Version 3.8.5 needs minSdkVersion >= 24
 
-
-
+    testImplementation 'junit:junit:4.12'
+    testImplementation 'org.assertj:assertj-core:3.9.0'
+    testImplementation 'org.robolectric:robolectric:3.8'
+    testImplementation("com.squareup.okhttp3:mockwebserver:3.9.1") {
+        exclude module: "okhttp"
+    }
+    testImplementation "joda-time:joda-time:2.9.9"
 }
