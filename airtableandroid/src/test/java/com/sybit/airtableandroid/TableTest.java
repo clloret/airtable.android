@@ -45,7 +45,7 @@ public class TableTest {
   }
 
   @Test
-  public void select() {
+  public void select_Always_ReturnAllValues() {
 
     TestObserver<Entity> subscriber = new TestObserver<>();
 
@@ -61,7 +61,7 @@ public class TableTest {
   }
 
   @Test
-  public void find() {
+  public void find_Always_ReturnCorrectValue() {
 
     TestObserver<Entity> testObserver = new TestObserver<>();
 
@@ -76,7 +76,7 @@ public class TableTest {
   }
 
   @Test
-  public void create() {
+  public void create_Always_ReturnCreatedValue() {
 
     TestObserver<Entity> testObserver = new TestObserver<>();
 
@@ -91,7 +91,7 @@ public class TableTest {
   }
 
   @Test
-  public void update() {
+  public void update_Always_ReturnUpdatedValue() {
 
     TestObserver<Entity> testObserver = new TestObserver<>();
 
@@ -105,7 +105,7 @@ public class TableTest {
   }
 
   @Test
-  public void destroy() {
+  public void destroy_Always_ReturnTrue() {
 
     Date date = Helper.newDate();
     Entity newEntity = new Entity("Text 3", 333.3, true, date);
