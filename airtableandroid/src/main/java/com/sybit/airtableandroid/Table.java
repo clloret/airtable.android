@@ -488,7 +488,10 @@ public class Table<T> {
       PostRecord body = new PostRecord<T>();
       body.setFields(filterFields(item));
 
-      Gson gson = new GsonBuilder().setDateFormat(DATE_FORMAT).create();
+      Gson gson = new GsonBuilder()
+          .setDateFormat(DATE_FORMAT)
+          .serializeNulls()
+          .create();
       jsonObject = new JSONObject(gson.toJson(body));
 
     } catch (Exception ex) {
