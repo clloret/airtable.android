@@ -70,7 +70,7 @@ public class TableTest {
 
     Date date = Helper.newDate();
 
-    Entity newEntity = new Entity(FIND_RECORD_ID, "Text 1", 111.1, true, date);
+    Entity newEntity = new Entity(FIND_RECORD_ID, "Text 1", 111.1, true, date, 999);
 
     checkEntityValues(testObserver, newEntity);
   }
@@ -82,7 +82,22 @@ public class TableTest {
 
     Date date = Helper.newDate();
 
-    Entity newEntity = new Entity("Text 3", 333.3, true, date);
+    Entity newEntity = new Entity("Text 3", 333.3, true, date, 999);
+
+    entityTable.create(newEntity)
+        .subscribe(testObserver);
+
+    checkEntityValues(testObserver, newEntity);
+  }
+
+  @Test
+  public void create_WhenNullInteger_CreateCorrectValues() {
+
+    TestObserver<Entity> testObserver = new TestObserver<>();
+
+    Date date = Helper.newDate();
+
+    Entity newEntity = new Entity("Text 3", 333.3, true, date, null);
 
     entityTable.create(newEntity)
         .subscribe(testObserver);
@@ -96,7 +111,21 @@ public class TableTest {
     TestObserver<Entity> testObserver = new TestObserver<>();
 
     Entity newEntity = new Entity(UPDATE_RECORD_ID, "Text modified", 111.1, true,
-        Helper.newDate());
+        Helper.newDate(), 999);
+
+    entityTable.update(newEntity)
+        .subscribe(testObserver);
+
+    checkEntityValues(testObserver, newEntity);
+  }
+
+  @Test
+  public void update_WhenNullInteger_UpdateCorrectValues() {
+
+    TestObserver<Entity> testObserver = new TestObserver<>();
+
+    Entity newEntity = new Entity(UPDATE_RECORD_ID, "Text modified", 111.1, true,
+        Helper.newDate(), null);
 
     entityTable.update(newEntity)
         .subscribe(testObserver);
@@ -108,7 +137,7 @@ public class TableTest {
   public void destroy_Always_ReturnTrue() {
 
     Date date = Helper.newDate();
-    Entity newEntity = new Entity("Text 3", 333.3, true, date);
+    Entity newEntity = new Entity("Text 3", 333.3, true, date, 999);
 
     Maybe<Entity> entityMaybe = entityTable.create(newEntity);
     Entity entity = entityMaybe.blockingGet();

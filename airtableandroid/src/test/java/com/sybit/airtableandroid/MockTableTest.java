@@ -88,7 +88,7 @@ public class MockTableTest {
 
     Date date = Helper.newDate();
 
-    Entity entity = new Entity("New event", 111.1, true, date);
+    Entity entity = new Entity("New event", 111.1, true, date, 999);
 
     TestObserver<Entity> testObserver = entityTable.create(entity)
         .toObservable()
@@ -104,7 +104,7 @@ public class MockTableTest {
     enqueueMockResponse(200, fileName);
 
     Entity entity = new Entity("rec0XqfldqwfXeoaa", "Text modified", 111.1, true,
-        Helper.newDate());
+        Helper.newDate(), 999);
 
     TestObserver<Entity> testObserver = entityTable.update(entity)
         .toObservable()

@@ -46,6 +46,10 @@ public class Helper {
         ))
         .assertValue(check(
             result -> assertThat(result.isCheckbox()).isEqualTo(newEntity.isCheckbox())
+        ))
+        .assertValue(check(
+            result -> assertThat(result.getNullableInteger())
+                .isEqualTo(newEntity.getNullableInteger())
         ));
   }
 

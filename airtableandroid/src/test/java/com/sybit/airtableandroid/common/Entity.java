@@ -11,35 +11,47 @@ import java.util.Date;
 public final class Entity {
 
   @Expose(serialize = false)
-  private String id;
+  private transient String id;
 
+  @Expose
   @SerializedName("Text")
   private String text;
 
+  @Expose
   @SerializedName("Number")
   private double number;
 
+  @Expose
   @SerializedName("Checkbox")
   private boolean checkbox;
 
+  @Expose
   @SerializedName("Date")
   private Date date;
 
-  public Entity(String id, String text, double number, boolean checkbox, Date date) {
+  @Expose
+  @SerializedName("NullableInteger")
+  private Integer nullableInteger;
+
+  public Entity(String id, String text, double number, boolean checkbox, Date date,
+      Integer nullableInteger) {
 
     this.id = id;
     this.text = text;
     this.number = number;
     this.checkbox = checkbox;
     this.date = date;
+    this.nullableInteger = nullableInteger;
   }
 
-  public Entity(String text, double number, boolean checkbox, Date date) {
+  public Entity(String text, double number, boolean checkbox, Date date,
+      Integer nullableInteger) {
 
     this.text = text;
     this.number = number;
     this.checkbox = checkbox;
     this.date = date;
+    this.nullableInteger = nullableInteger;
   }
 
   public Entity() {
@@ -101,4 +113,13 @@ public final class Entity {
     this.id = id;
   }
 
+  public Integer getNullableInteger() {
+
+    return nullableInteger;
+  }
+
+  public void setNullableInteger(Integer nullableInteger) {
+
+    this.nullableInteger = nullableInteger;
+  }
 }
