@@ -34,6 +34,12 @@ public class AirtableException extends Exception {
     if (e.getCause() instanceof ConnectTimeoutException) {
       Timber.e("possible forgotten to set correct apiKey or base?");
     }
+
+    if (e instanceof ANError) {
+      ANError anError = (ANError) e;
+
+      statusCode = anError.getErrorCode();
+    }
   }
 
   /**
@@ -51,8 +57,6 @@ public class AirtableException extends Exception {
 
     if (e instanceof ANError) {
       ANError anError = (ANError) e;
-
-      statusCode = anError.getErrorCode();
 
       try {
 
