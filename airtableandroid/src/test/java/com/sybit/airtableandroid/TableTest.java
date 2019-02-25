@@ -8,9 +8,11 @@ import android.content.Context;
 import android.os.Build.VERSION_CODES;
 import com.sybit.airtableandroid.common.Entity;
 import com.sybit.airtableandroid.common.Helper;
+import com.sybit.airtableandroid.exception.AirtableException;
 import io.reactivex.Maybe;
 import io.reactivex.Observable;
 import io.reactivex.observers.TestObserver;
+import java.net.HttpURLConnection;
 import java.util.Date;
 import org.junit.Before;
 import org.junit.Test;
@@ -31,6 +33,7 @@ public class TableTest {
   private static final String BASE = BuildConfig.AIRTABLE_BASE_TEST;
   private static final String UPDATE_RECORD_ID = "recQOHC2KzU9Rn5dR";
   private static final String FIND_RECORD_ID = "rec7KrK506mfubD7N";
+  private static final String FIND_RECORD_ID_NOT = "recXXXXXXXXXXXXXX";
   private Table<Entity> entityTable;
 
   @Before
@@ -73,6 +76,21 @@ public class TableTest {
     Entity newEntity = new Entity(FIND_RECORD_ID, "Text 1", 111.1, true, date, 999);
 
     checkEntityValues(testObserver, newEntity);
+  }
+
+  @Test
+  public void find_WhenNotFound_ThrowAirtableException() {
+
+    TestObserver<Entity> testObserver = new TestObserver<>();
+
+    entityTable.find(FIND_RECORD_ID_NOT)
+        .subscribe(testObserver);
+
+    testObserver.assertFailure(error -> {
+      AirtableException airtableException = (AirtableException) error;
+
+      return airtableException.getStatusCode() == HttpURLConnection.HTTP_NOT_FOUND;
+    });
   }
 
   @Test

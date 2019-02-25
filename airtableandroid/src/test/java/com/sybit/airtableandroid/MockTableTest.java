@@ -11,6 +11,7 @@ import com.sybit.airtableandroid.exception.AirtableException;
 import io.reactivex.Observable;
 import io.reactivex.observers.TestObserver;
 import java.io.IOException;
+import java.net.HttpURLConnection;
 import java.util.Date;
 import okhttp3.mockwebserver.MockResponse;
 import okhttp3.mockwebserver.MockWebServer;
@@ -131,10 +132,10 @@ public class MockTableTest {
   }
 
   @Test
-  public void select_WhenNotFound_ThrowException() throws Exception {
+  public void select_WhenNotFound_ThrowAirtableException() throws Exception {
 
     String fileName = "entity_not_found.json";
-    enqueueMockResponse(404, fileName);
+    enqueueMockResponse(HttpURLConnection.HTTP_NOT_FOUND, fileName);
 
     TestObserver<Entity> testObserver = entityTable.select()
         .toObservable()
@@ -142,6 +143,12 @@ public class MockTableTest {
         .test();
 
     testObserver.awaitTerminalEvent();
+
+    testObserver.assertFailure(error -> {
+      AirtableException airtableException = (AirtableException) error;
+
+      return airtableException.getStatusCode() == HttpURLConnection.HTTP_NOT_FOUND;
+    });
 
     testObserver
         .assertFailureAndMessage(AirtableException.class,
