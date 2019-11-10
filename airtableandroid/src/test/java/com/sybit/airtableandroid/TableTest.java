@@ -6,6 +6,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import android.content.Context;
 import android.os.Build.VERSION_CODES;
+import androidx.test.core.app.ApplicationProvider;
 import com.sybit.airtableandroid.common.Entity;
 import com.sybit.airtableandroid.common.Helper;
 import com.sybit.airtableandroid.exception.AirtableException;
@@ -18,14 +19,13 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
-import org.robolectric.RuntimeEnvironment;
 import org.robolectric.annotation.Config;
 
 /**
  * Created by Carlos Lloret
  */
 
-@Config(constants = BuildConfig.class, sdk = VERSION_CODES.M, manifest = Config.NONE)
+@Config(sdk = VERSION_CODES.M, manifest = Config.NONE)
 @RunWith(RobolectricTestRunner.class)
 public class TableTest {
 
@@ -39,7 +39,7 @@ public class TableTest {
   @Before
   public void setUp() throws Exception {
 
-    Context appContext = RuntimeEnvironment.application;
+    Context appContext = ApplicationProvider.getApplicationContext();
 
     Airtable airtable = new Airtable(appContext).configure(API_KEY);
     Base base = airtable.base(BASE);

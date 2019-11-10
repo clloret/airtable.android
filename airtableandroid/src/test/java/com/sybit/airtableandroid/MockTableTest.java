@@ -28,7 +28,7 @@ import org.robolectric.annotation.Config;
  * Created by Carlos Lloret
  */
 
-@Config(constants = BuildConfig.class, sdk = VERSION_CODES.M, manifest = Config.NONE)
+@Config(sdk = VERSION_CODES.M, manifest = Config.NONE)
 @RunWith(RobolectricTestRunner.class)
 public class MockTableTest {
 
