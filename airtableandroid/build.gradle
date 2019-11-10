@@ -65,7 +65,7 @@ dependencies {
     implementation "com.fasterxml.jackson.core:jackson-databind:$jackson"
     implementation "com.jakewharton.timber:timber:4.7.1"
     implementation 'com.amitshekhar.android:rx2-android-networking:1.0.0'
-    implementation 'com.google.code.gson:gson:2.8.5'
+    implementation 'com.google.code.gson:gson:2.8.6'
     implementation 'commons-beanutils:commons-beanutils:1.9.3'
     implementation 'org.jodd:jodd-bean:3.7.1' // Version 3.8.5 needs minSdkVersion >= 24
 
