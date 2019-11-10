@@ -1,4 +1,4 @@
-    buildscript {
+buildscript {
     repositories {
         jcenter()
         google()
@@ -72,8 +72,6 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     testImplementation 'org.assertj:assertj-core:3.9.0'
     testImplementation 'org.robolectric:robolectric:3.8'
-    testImplementation("com.squareup.okhttp3:mockwebserver:3.9.1") {
-        exclude module: "okhttp"
-    }
+    testImplementation 'com.squareup.okhttp3:mockwebserver:4.2.2'
     testImplementation "joda-time:joda-time:2.10.3"
 }
