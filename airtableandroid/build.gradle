@@ -75,9 +75,9 @@ dependencies {
     implementation 'org.jodd:jodd-bean:3.7.1' // Version 3.8.5 needs minSdkVersion >= 24
 
     testImplementation 'androidx.test:core:1.2.0'
-    testImplementation 'junit:junit:4.12'
-    testImplementation 'org.assertj:assertj-core:3.9.0'
-    testImplementation 'org.robolectric:robolectric:4.3.1'
+    testImplementation 'com.google.truth:truth:1.0'
     testImplementation 'com.squareup.okhttp3:mockwebserver:4.2.2'
-    testImplementation "joda-time:joda-time:2.10.3"
+    testImplementation 'joda-time:joda-time:2.10.3'
+    testImplementation 'junit:junit:4.12'
+    testImplementation 'org.robolectric:robolectric:4.3.1'
 }

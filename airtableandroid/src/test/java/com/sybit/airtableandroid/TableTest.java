@@ -1,8 +1,8 @@
 package com.sybit.airtableandroid;
 
+import static com.google.common.truth.Truth.assertThat;
 import static com.sybit.airtableandroid.common.Helper.check;
 import static com.sybit.airtableandroid.common.Helper.checkEntityValues;
-import static org.assertj.core.api.Assertions.assertThat;
 
 import android.content.Context;
 import android.os.Build.VERSION_CODES;
@@ -60,7 +60,8 @@ public class TableTest {
     subscriber
         .assertComplete()
         .assertNoErrors()
-        .assertValueAt(0, check(result -> assertThat(result.getText()).isEqualTo("Text 1")));
+        .assertValueAt(0,
+            check(result -> assertThat(result.getText()).isEqualTo("Text 1")));
   }
 
   @Test

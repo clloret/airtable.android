@@ -1,6 +1,6 @@
 package com.sybit.airtableandroid.common;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static com.google.common.truth.Truth.assertThat;
 
 import io.reactivex.functions.Consumer;
 import io.reactivex.functions.Predicate;
@@ -45,7 +45,8 @@ public class Helper {
                 .isEqualTo(newEntity.getDate())
         ))
         .assertValue(check(
-            result -> assertThat(result.isCheckbox()).isEqualTo(newEntity.isCheckbox())
+            result -> assertThat(result.isCheckbox())
+                .isEqualTo(newEntity.isCheckbox())
         ))
         .assertValue(check(
             result -> assertThat(result.getNullableInteger())
